@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-box {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 360px;
+            text-align: center;
+        }
+        .login-box h2 {
+            margin-bottom: 2rem;
+        }
+        .login-box input[type="text"],
+        .login-box input[type="password"] {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        .login-box button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #0077cc;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .login-box button:hover {
+            background-color: #005fa3;
+        }
+        .social-login {
+            margin-top: 1.5rem;
+        }
+        .social-login button {
+            width: 100%;
+            padding: 0.6rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .google { background-color: #db4437; color: white; }
+        .kakao  { background-color: #fee500; color: #3c1e1e; }
+        .naver  { background-color: #03c75a; color: white; }
+    </style>
+</head>
+<body>
+<div class="login-box">
+    <h2>로그인</h2>
+    <form action="/login" method="post">
+        <input type="text" name="email" placeholder="이메일" required />
+        <input type="password" name="password" placeholder="비밀번호" required />
+        <button type="submit">로그인</button>
+    </form>
+    <div class="social-login">
+        <button class="google" onclick="location.href='/oauth2/authorization/google'">Google 계정으로 로그인</button>
+        <button class="kakao" onclick="location.href='/oauth2/authorization/kakao'">Kakao 계정으로 로그인</button>
+        <button class="naver" onclick="location.href='/oauth2/authorization/naver'">Naver 계정으로 로그인</button>
+    </div>
+</div>
+</body>
+</html>

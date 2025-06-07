@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>기업 로그인</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #eef1f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-box {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        .login-box h2 {
+            margin-bottom: 1.5rem;
+        }
+        .login-box input[type="email"],
+        .login-box input[type="password"] {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        .login-box button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #004080;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .login-box button:hover {
+            background-color: #002f66;
+        }
+        .note {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="login-box">
+    <h2>기업 고객 로그인</h2>
+    <form action="/login/corporate" method="post">
+        <input type="email" name="email" placeholder="사내 이메일 (예: name@company.com)" required />
+        <input type="password" name="password" placeholder="비밀번호" required />
+        <button type="submit">로그인</button>
+    </form>
+    <div class="note">
+        본 로그인은 사내 이메일 사용자만 이용 가능합니다.<br />
+        도메인 인증된 기업 전용 기능이 제공됩니다.
+    </div>
+</div>
+</body>
+</html>

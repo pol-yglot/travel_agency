@@ -1,14 +1,15 @@
 server:
-  port: 8083
+  port: 8081
 
 spring:
   application:
     name: demo
 
-#  sql:
-#    init:
-#      mode: always
-#      schema-locations: classpath:init.sql
+  sql:
+    init:
+      mode: always
+#      schema-locations: classpath:docker/01_schema.sql // 스프링부트가 자동으로 경로 잡음
+#      data-locations: classpath:docker/02_data.sql // 한줄이라도 에러 발생시 이후 라인은 진행 x
 
   datasource:
     url: jdbc:postgresql://localhost:5433/travel_agency
@@ -22,6 +23,7 @@ spring:
     suffix: .html
     mode: HTML
     encoding: UTF-8
+    enabled: true
 
   servlet:
     multipart:
@@ -45,7 +47,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.travelAgency.model
+  type-aliases-package: com.example.demo.model
 
 logging:
   level:

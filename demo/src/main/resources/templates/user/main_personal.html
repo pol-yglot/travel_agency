@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홈 - 기업출장여행사</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f4f6f9;
+        }
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        nav a {
+            color: white;
+            margin-left: 1.5rem;
+            text-decoration: none;
+        }
+        .welcome {
+            padding: 2rem;
+            text-align: center;
+        }
+        .welcome h2 {
+            margin-bottom: 1rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            margin-bottom: 0.5rem;
+        }
+        .card p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .card a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #0066cc;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>기업출장여행사</h1>
+    <nav>
+        <a href="/mypage">마이페이지</a>
+        <a href="/logout">로그아웃</a>
+    </nav>
+</header>
+
+<div class="welcome">
+    <h2>환영합니다, 홍길동님!</h2>
+    <p>원하는 서비스를 선택하세요</p>
+</div>
+
+<div class="grid">
+    <div class="card">
+        <h3>항공권 예약</h3>
+        <p>전 세계 항공편을 검색하고 빠르게 예약하세요.</p>
+        <a href="/flight">항공 검색</a>
+    </div>
+    <div class="card">
+        <h3>호텔 예약</h3>
+        <p>출장에 적합한 숙소를 손쉽게 찾고 예약하세요.</p>
+        <a href="/hotel">호텔 검색</a>
+    </div>
+    <div class="card">
+        <h3>차량 렌트</h3>
+        <p>지역 기반 렌터카를 실시간으로 확인하세요.</p>
+        <a href="/car">차량 검색</a>
+    </div>
+    <div class="card">
+        <h3>자동 일정표</h3>
+        <p>예약 내역 기반으로 맞춤 일정을 생성합니다.</p>
+        <a href="/schedule">일정 보기</a>
+    </div>
+    <div class="card">
+        <h3>여행 정보</h3>
+        <p>외교부 API 기반 실시간 여행 정보 제공</p>
+        <a href="/board/info">정보 보기</a>
+    </div>
+</div>
+</body>
+</html>

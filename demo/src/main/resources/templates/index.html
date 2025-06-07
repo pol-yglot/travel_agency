@@ -1,10 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>기업출장여행사</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('/assets/bg-travel.jpg') center/cover no-repeat;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .card-wrapper {
+            display: flex;
+            gap: 2rem;
+        }
+        .card {
+            width: 280px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        .card button {
+            padding: 0.6rem 1.2rem;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .card button:hover {
+            background-color: #004d99;
+        }
+    </style>
 </head>
 <body>
-안뇽 메인이에용
+<div class="container">
+    <div class="logo">기업출장여행사</div>
+    <div class="card-wrapper">
+        <div class="card">
+            <h2>개인 고객</h2>
+            <p>자유여행·출장 등 개인 일정 관리와 예약을 시작하세요.</p>
+            <button onclick="location.href='/login?type=personal'">개인 로그인</button>
+        </div>
+        <div class="card">
+            <h2>기업 고객</h2>
+            <p>사내 이메일을 통해 기업용 예약 및 일정 서비스를 이용하세요.</p>
+            <button onclick="location.href='/login?type=corporate'">기업 로그인</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>

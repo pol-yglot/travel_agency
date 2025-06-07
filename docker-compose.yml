@@ -13,8 +13,8 @@ services:
       POSTGRES_PASSWORD: 1234
     volumes:
       - db-data:/var/lib/postgresql/data
-      - ./demo/docker/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
-      - ./demo/docker/02_data.sql:/docker-entrypoint-initdb.d/02_data.sql
+      - ./docker/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+      - ./docker/02_data.sql:/docker-entrypoint-initdb.d/02_data.sql
     networks:
       - travel-net
 
