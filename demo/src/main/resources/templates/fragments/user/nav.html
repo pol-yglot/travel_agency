@@ -1,0 +1,17 @@
+<!-- templates/fragments/nav.html -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+<div th:fragment="nav">
+    <nav class="main-nav">
+        <a th:href="@{/}">메인</a>
+        <a th:href="@{/flight}">항공</a>
+        <a th:href="@{/hotel}">호텔</a>
+        <a th:href="@{/rental}">렌터카</a>
+        <a th:href="@{/info}">여행정보</a>
+    </nav>
+</div>
+</body>
+</html>

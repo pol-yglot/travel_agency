@@ -28,18 +28,37 @@ COMMENT ON COLUMN company.domain_email IS '사내 이메일 도메인';
 
 -- 사용자 테이블 (개인 + 기업 통합)
 CREATE TABLE "user" (
-                        user_id     SERIAL PRIMARY KEY,
-                        email       VARCHAR(100) NOT NULL UNIQUE,
-                        password    VARCHAR(255), -- 기업 고객용
-                        name        VARCHAR(100),
-                        user_type   VARCHAR(10) CHECK (user_type IN ('PERSONAL', 'CORPORATE')) NOT NULL,
-                        company_id  INT REFERENCES company(company_id),
-                        created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                        is_deleted  BOOLEAN DEFAULT FALSE
+                        user_id         SERIAL PRIMARY KEY,
+                        email           VARCHAR(100) NOT NULL UNIQUE,
+                        password        VARCHAR(255),
+                        name            VARCHAR(100),
+                        user_type       VARCHAR(10) NOT NULL CHECK (user_type IN ('PERSONAL', 'CORPORATE')),
+                        company_id      INTEGER,
+                        phone           VARCHAR(20),
+                        birth_date      DATE,
+                        passport_name   VARCHAR(100),
+                        nationality     VARCHAR(50),
+                        marketing_agree BOOLEAN DEFAULT FALSE,
+                        created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                        is_deleted      BOOLEAN DEFAULT FALSE,
+                        CONSTRAINT fk_user_company FOREIGN KEY (company_id) REFERENCES company(company_id)
 );
-COMMENT ON TABLE "user" IS '개인/기업 사용자 테이블';
-COMMENT ON COLUMN "user".user_type IS 'PERSONAL or CORPORATE 구분';
-COMMENT ON COLUMN "user".company_id IS '기업 고객일 경우 소속 회사';
+
+COMMENT ON TABLE "user" IS '개인/기업 회원 정보를 저장하는 테이블';
+
+COMMENT ON COLUMN "user".user_id         IS '회원 고유 ID';
+COMMENT ON COLUMN "user".email           IS '이메일 (로그인 ID)';
+COMMENT ON COLUMN "user".password        IS '비밀번호 (암호화 저장)';
+COMMENT ON COLUMN "user".name            IS '이름';
+COMMENT ON COLUMN "user".user_type       IS '회원 구분 (PERSONAL, CORPORATE)';
+COMMENT ON COLUMN "user".company_id      IS '기업회원일 경우 회사 ID (외래키)';
+COMMENT ON COLUMN "user".phone           IS '연락처';
+COMMENT ON COLUMN "user".birth_date      IS '생년월일';
+COMMENT ON COLUMN "user".passport_name   IS '여권상 이름';
+COMMENT ON COLUMN "user".nationality     IS '국적';
+COMMENT ON COLUMN "user".marketing_agree IS '마케팅 수신 동의 여부';
+COMMENT ON COLUMN "user".created_at      IS '계정 생성일시';
+COMMENT ON COLUMN "user".is_deleted      IS '삭제 여부 (Soft delete)';
 
 -- 관리자 테이블
 CREATE TABLE admin (
@@ -53,14 +72,14 @@ COMMENT ON TABLE admin IS '여행사 관리자 계정';
 
 -- 항공편
 CREATE TABLE flight (
-                        flight_id   SERIAL PRIMARY KEY,
-                        name        VARCHAR(100),
-                        origin      VARCHAR(100),
-                        destination VARCHAR(100),
-                        departure_time TIMESTAMP,
-                        arrival_time   TIMESTAMP,
-                        price       NUMERIC(10,2),
-                        created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                        flight_id       SERIAL PRIMARY KEY,
+                        name            VARCHAR(100),
+                        origin          VARCHAR(100),
+                        destination     VARCHAR(100),
+                        departure_time  TIMESTAMP,
+                        arrival_time    TIMESTAMP,
+                        price           NUMERIC(10,2),
+                        created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- 호텔
@@ -84,12 +103,14 @@ CREATE TABLE car (
 
 -- 예약
 CREATE TABLE reservation (
-                             reservation_id  SERIAL PRIMARY KEY,
-                             user_id         INT REFERENCES "user"(user_id),
-                             reservation_type VARCHAR(20) CHECK (reservation_type IN ('FLIGHT', 'HOTEL', 'CAR')),
-                             status          VARCHAR(20) DEFAULT 'PENDING',
-                             created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                             reservation_id    SERIAL PRIMARY KEY,
+                             user_id           INT REFERENCES "user"(user_id),
+                             company_id        INT REFERENCES company(company_id),
+                             reservation_type  VARCHAR(20) CHECK (reservation_type IN ('FLIGHT', 'HOTEL', 'CAR')),
+                             status            VARCHAR(20) DEFAULT 'PENDING',
+                             created_at        TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+COMMENT ON COLUMN reservation.company_id IS '예약 소속 회사 ID (조회용)';
 
 -- 예약 상세
 CREATE TABLE reservation_detail (
@@ -119,19 +140,3 @@ CREATE TABLE schedule (
                           end_time        TIMESTAMP,
                           created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
--- 🔁 수정사항: user 테이블에 user_type 및 company_id 추가
-ALTER TABLE "user"
-    ADD COLUMN user_type VARCHAR(20) DEFAULT 'PERSONAL';
-
-ALTER TABLE "user"
-    ADD COLUMN company_id INTEGER REFERENCES company(company_id);
-
-COMMENT ON COLUMN "user".user_type IS '사용자 유형 (PERSONAL / CORPORATE)';
-COMMENT ON COLUMN "user".company_id IS '소속 회사 ID (기업 사용자 전용)';
-
--- 🔁 선택적 성능 최적화: reservation 테이블에 company_id 중복 저장
-ALTER TABLE reservation
-    ADD COLUMN company_id INTEGER;
-
-COMMENT ON COLUMN reservation.company_id IS '예약 소속 회사 ID (조회용)';

@@ -1,18 +1,31 @@
 package com.example.demo.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+@Configuration
 public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
-                authorizationManagerRequestMatcherRegistry.requestMatchers("/").permitAll() // 메인 페이지는 인증 없이 접근 허용
-                    .anyRequest().permitAll(); // 그 외의 요청은 인증 필요
-            });
+                .csrf(csrf -> csrf.disable()) // ✅ CSRF 임시 비활성화, 이래야 POST 요청이 가능
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/", "/signup/**", "/user/**",
+                                "/css/**", "/js/**", "/images/**", "/favicon.ico", "/site.webmanifest"
+                        ).permitAll()
+                        .anyRequest().authenticated()
+                );
         return http.build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

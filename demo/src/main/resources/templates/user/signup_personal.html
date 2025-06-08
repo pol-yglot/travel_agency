@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<!-- 공통 head include -->
+<th:block th:replace="fragments/user/head :: head"></th:block>
+<link rel="stylesheet" href="/css/user/signup.css">
+
+<body>
+<!-- 공통 header include -->
+<th:block th:replace="fragments/user/header :: header"></th:block>
+
+<!-- 공통 nav include -->
+<th:block th:replace="fragments/user/nav :: nav"></th:block>
+
+<main class="signup-form">
+    <section class="form-wrapper">
+        <h2>개인 회원가입</h2>
+        <form id="signup-form" method="post" action="/user/signup_personal">
+            <!-- STEP 1 -->
+            <section id="step1">
+                <h2>기본 정보 입력</h2>
+                <input type="text" name="name" placeholder="이름" required>
+                <input type="email" name="email" placeholder="이메일" required>
+                <input type="password" name="password" placeholder="비밀번호" required>
+                <input type="password" name="confirm_password" placeholder="비밀번호 확인" required>
+                <input type="tel" name="phone" placeholder="휴대폰 번호">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="marketing" name="marketingAgree" required>
+                    <label for="marketing">마케팅 정보 수신 동의</label>
+                </div>
+                <button type="button" onclick="validateStep1()">다음</button>
+            </section>
+
+            <!-- STEP 2 -->
+            <section id="step2" style="display:none;">
+                <h2>상세 정보 입력</h2>
+                <input type="date" id="birth" name="birthDate" placeholder="생년월일 YYYY-MM-DD" required>
+                <input type="text" name="passportName" placeholder="여권 영문 이름">
+                <input type="text" name="nationality" placeholder="국적">
+                <button type="button" class="backBtn" onclick="goToStep1()">이전</button>
+                <button type="submit">가입 완료</button>
+            </section>
+        </form>
+
+        <div th:if="${errorMessage}" class="error-message">
+            <p th:text="${errorMessage}" style="color:red;"></p>
+        </div>
+
+    </section>
+</main>
+
+<!-- 공통 footer include -->
+<th:block th:replace="fragments/user/footer :: footer"></th:block>
+
+<script>
+    function goToStep2() {
+        document.getElementById("step1").style.display = "none";
+        document.getElementById("step2").style.display = "block";
+    }
+
+    function goToStep1() {
+        document.getElementById("step2").style.display = "none";
+        document.getElementById("step1").style.display = "block";
+    }
+</script>
+<script src="/js/user/signup.js"></script>
+</body>
+</html>
