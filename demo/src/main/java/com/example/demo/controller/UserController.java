@@ -38,6 +38,25 @@ public class UserController {
         }
     }
 
+    @GetMapping("/logout_personal")
+    public String logoutPersonal(HttpSession session) {
+        UserVO loginUser = (UserVO) session.getAttribute("loginUser");
+        if (loginUser != null) {
+            session.removeAttribute("loginUser"); // 세션에서 사용자 정보 제거
+            log.info("로그아웃 성공: {}", loginUser.getEmail());
+        }
+        return "redirect:/user/login_personal?logout"; // 로그아웃 후 로그인 페이지로 리다이렉트
+    }
+
+    @GetMapping("/mypage_personal")
+    public String personalMypage(HttpSession session) {
+        UserVO loginUser = (UserVO) session.getAttribute("loginUser");
+        if (loginUser == null) {
+            return "redirect:/user/login_personal"; // 로그인 안 된 경우 로그인 페이지로 리다이렉트
+        }
+        return "user/mypage_personal"; // 로그인 된 경우 마이페이지로 이동
+    }
+
     @GetMapping("/main_personal")
     public String personalMain(HttpSession session) {
         UserVO loginUser = (UserVO) session.getAttribute("loginUser");
