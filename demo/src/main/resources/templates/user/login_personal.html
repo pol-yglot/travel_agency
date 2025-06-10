@@ -104,27 +104,33 @@
 
 <div class="login-wrapper">
     <h2 class="login-title">로그인</h2>
-    <form action="/user/login_personal" method="post">
+    <form th:action="@{/user/login_personal}" method="post">
         <label class="form-label">아이디 (이메일)</label>
-        <input type="text" name="email" class="form-input" />
+        <input type="text" name="username" class="form-input" required />
 
         <label class="form-label">비밀번호</label>
-        <input type="password" name="password" class="form-input" />
+        <input type="password" name="password" class="form-input" required />
 
         <button type="submit" class="btn-primary">로그인</button>
 
+        <div th:if="${param.error}" style="color:#db4437; margin-top:1rem; text-align:center;">
+            로그인 실패: 아이디 또는 비밀번호를 확인하세요.
+        </div>
+        <div th:if="${param.logout}" style="color:#3b82f6; margin-top:1rem; text-align:center;">
+            로그아웃 되었습니다.
+        </div>
+
         <div class="social-login">
-            <button class="btn-social google" title="구글 로그인"><i class="fab fa-google"></i></button>
-            <button class="btn-social kakao" title="카카오 로그인"><i class="fa-solid fa-comment"></i></button>
-            <button class="btn-social naver" title="네이버 로그인"><i class="fa-solid fa-n"></i></button>
+            <button type="button" class="btn-social google" title="구글 로그인"><i class="fab fa-google"></i></button>
+            <button type="button" class="btn-social kakao" title="카카오 로그인"><i class="fa-solid fa-comment"></i></button>
+            <button type="button" class="btn-social naver" title="네이버 로그인"><i class="fa-solid fa-n"></i></button>
         </div>
 
         <div class="login-footer">
-            <a href="/user/signup/personal">회원가입</a>
+            <a href="/user/signup_personal">회원가입</a>
             <span>|</span>
             <a href="/user/find-account">계정찾기</a>
         </div>
-
     </form>
 </div>
 
