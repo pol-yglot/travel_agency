@@ -1,0 +1,19 @@
+<!-- templates/test.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+<h2>로그인 테스트 페이지</h2>
+
+<p th:text="'현재 사용자: ' + ${#authentication}"></p>
+
+<sec:authorize access="isAuthenticated()">
+    <p style="color:green;">✅ 로그인됨</p>
+</sec:authorize>
+<sec:authorize access="!isAuthenticated()">
+    <p style="color:red;">❌ 비로그인 상태</p>
+</sec:authorize>
+
+</body>
+</html>

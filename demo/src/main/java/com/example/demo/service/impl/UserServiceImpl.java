@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -41,11 +43,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserVO loginPersonalUser(String email, String password) {
-        UserVO user = userMapper.findByEmail(email);
-        if (user == null || !passwordEncoder.matches(password, user.getPassword())) {
+        Optional<UserVO> user = userMapper.findByEmail(email);
+        if (user.isEmpty() || !passwordEncoder.matches(password, user.get().getPassword())) {
             throw new IllegalArgumentException("아이디 또는 비밀번호가 올바르지 않습니다.");
         }
-        return user;
+        return user.get();
     }
 
 }

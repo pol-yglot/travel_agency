@@ -13,14 +13,24 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // ✅ CSRF 임시 비활성화, 이래야 POST 요청이 가능
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/", "/signup/**", "/user/**",
-                                "/css/**", "/js/**", "/images/**", "/favicon.ico", "/site.webmanifest"
-                        ).permitAll()
-                        .anyRequest().authenticated()
-                );
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                    "/", "/admin/**", "/user/**", "/flight/**", "/copr/**", "/common/**",
+                    "/css/**", "/js/**", "/images/**", "/favicon.ico", "/site.webmanifest"
+                ).permitAll()
+                .anyRequest().authenticated()
+            )
+            .formLogin(form -> form
+                .loginPage("/user/login_personal")
+                .defaultSuccessUrl("/", true)
+                .failureUrl("/user/login_personal?error")
+                .permitAll()
+            )
+            .logout(logout -> logout
+                .logoutUrl("/user/logout_personal")
+                .logoutSuccessUrl("/")
+            );
         return http.build();
     }
 

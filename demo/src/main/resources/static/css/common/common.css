@@ -28,7 +28,9 @@ header h1 {
 }
 
 .login-btn,
-.signup-btn {
+.signup-btn,
+.mypage-btn,
+.logout-btn {
     background-color: white;
     color: #002f5f;
     font-weight: bold;
@@ -40,20 +42,24 @@ header h1 {
     transition: 0.3s;
 }
 
-.login-btn:hover {
+.login-btn:hover,
+.mypage-btn:hover {
     background-color: #dde7f5;
 }
 
-.signup-btn {
+.signup-btn,
+.logout-btn{
     background-color: #00a86b;
     color: white;
 }
 
-.signup-btn:hover {
+.signup-btn:hover,
+.logout-btn:hover {
     background-color: #00c48c;
 }
 
-.login-btn {
+.login-btn,
+. mypage-btn {
     background-color: #ffffff;
     color: #002f5f;
     font-weight: bold;
@@ -64,7 +70,8 @@ header h1 {
     cursor: pointer;
     transition: 0.3s;
 }
-.login-btn:hover {
+.login-btn:hover,
+.mypage-btn:hover {
     background-color: #dde7f5;
 }
 
@@ -184,10 +191,7 @@ nav a {
 }
 
 .error-message {
-    margin: 1rem 0;
-    font-weight: bold;
-    text-align: center;
-    color: #c00;
+    color: red; text-align: center; margin-top: 1rem;
 }
 
 /* footer */
