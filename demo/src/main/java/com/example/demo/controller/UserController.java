@@ -4,7 +4,9 @@ import com.example.demo.dto.UserSignupDTO;
 import com.example.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +25,25 @@ public class UserController {
         return "user/login_personal";
     }
 
-    @GetMapping("/logout_personal")
-    public String logoutPersonal() {
-        // 로그아웃 처리는 Spring Security가 담당하므로 별도 세션 처리 불필요
-        return "redirect:/user/login_personal?logout";
+//    @GetMapping("/logout_personal")
+//    public String logoutPersonal() {
+//        // 로그아웃 처리는 Spring Security가 담당하므로 별도 세션 처리 불필요
+//        return "redirect:/user/login_personal?logout";
+//    }
+
+    @GetMapping("/debug/auth")
+    @ResponseBody
+    public String checkAuth() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (auth == null) {
+            return "인증 정보 없음 (Authentication is null)";
+        }
+
+        return "인증 여부: " + auth.isAuthenticated() +
+                "<br>Principal: " + auth.getPrincipal() +
+                "<br>Authorities: " + auth.getAuthorities() +
+                "<br>유저명: " + auth.getName();
     }
 
     @GetMapping("/mypage_personal")

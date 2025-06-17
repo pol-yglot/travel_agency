@@ -3,101 +3,10 @@
 
 <!-- 공통 head include -->
 <th:block th:replace="fragments/user/head :: head"></th:block>
-<link rel="stylesheet" href="/css/user/signup.css">
-<style>
-    body {
-        background-color: #f9fafb;
-        font-family: 'Pretendard', 'system-ui', sans-serif;
-    }
 
-    .login-wrapper {
-        width: 100%;
-        max-width: 380px;
-        margin: 100px auto;
-        padding: 2rem;
-        background-color: white;
-        border-radius: 12px;
-        border: 1px solid #e5e7eb;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-
-    .login-title {
-        text-align: center;
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-    }
-
-    .form-label {
-        display: block;
-        font-size: 0.9rem;
-        margin-bottom: 0.3rem;
-        color: #374151;
-    }
-
-    .form-input {
-        width: 100%;
-        padding: 0.75rem;
-        margin-bottom: 1.2rem;
-        background-color: #f3f4f6;
-        border: 1px solid #d1d5db;
-        border-radius: 8px;
-        font-size: 1rem;
-        box-sizing: border-box;
-    }
-
-    .btn-primary {
-        width: 100%;
-        background-color: #3b82f6;
-        color: white;
-        padding: 0.75rem;
-        border: none;
-        border-radius: 8px;
-        font-size: 1rem;
-        cursor: pointer;
-    }
-
-    .social-login {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 1.5rem;
-    }
-
-    .btn-social {
-        width: 30%;
-        padding: 0.6rem;
-        border: none;
-        border-radius: 8px;
-        font-size: 1.2rem;
-        cursor: pointer;
-        background-color: #f3f4f6;
-    }
-
-    .google { color: #db4437; }
-    .kakao { color: #3c1e1e; }
-    .naver { color: #03c75a; }
-
-    .login-footer {
-        text-align: center;
-        margin-top: 1.5rem;
-        font-size: 0.9rem;
-        color: #6b7280;
-    }
-
-    .login-footer a {
-        text-decoration: none;
-        color: #3b82f6;
-        margin: 0 0.5rem;
-    }
-
-    .login-footer a:hover {
-        text-decoration: underline;
-    }
-
-</style>
 <body>
 <!-- 공통 header include -->
-<th:block th:replace="fragments/user/header :: header"></th:block>
+<th:block th:replace="~{fragments/user/header :: header}"></th:block>
 
 <!-- 공통 nav include -->
 <th:block th:replace="fragments/user/nav :: nav"></th:block>
@@ -106,10 +15,10 @@
     <h2 class="login-title">로그인</h2>
     <form th:action="@{/user/login_personal}" method="post">
         <label class="form-label">아이디 (이메일)</label>
-        <input type="text" name="username" class="form-input" required />
+        <input type="text" name="username" class="form-input" value="test2@naver.com" required />
 
         <label class="form-label">비밀번호</label>
-        <input type="password" name="password" class="form-input" required />
+        <input type="password" name="password" class="form-input" value="test222" required />
 
         <button type="submit" class="btn-primary">로그인</button>
 

@@ -487,7 +487,8 @@ pdfjs-editor-new-alt-text-disclaimer-learn-more-url = Rhagor
 pdfjs-editor-new-alt-text-create-automatically-button-label = Creu testun amgen yn awtomatig
 pdfjs-editor-new-alt-text-not-now-button = Nid nawr
 pdfjs-editor-new-alt-text-error-title = Methu â chreu testun amgen yn awtomatig
-pdfjs-editor-new-alt-text-error-description = Ysgrifennwch eich testun amgen eich hun neu ceisiwch eto yn nes ymlaen.
+pdfjs-editor-new-alt-text-error-description = Ysgrifennwch eich testun amgen eich hun neu ceisiwch eto yn nes
+ymlaen.
 pdfjs-editor-new-alt-text-error-close-button = Cau
 # Variables:
 #   $totalSize (Number) - the total size (in MB) of the AI model.

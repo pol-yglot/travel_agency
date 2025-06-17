@@ -1,24 +1,28 @@
-<!-- fragments/user/header.html -->
-<div th:fragment="header" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div th:fragment="header"
+     xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+
     <header class="header">
         <h1>
             <a href="/" style="color: inherit; text-decoration: none;">trapbiz</a>
         </h1>
         <div class="header-actions">
-            <!-- principal 전체 정보 출력 (디버깅용) -->
-            <!--<sec:authorize access="isAuthenticated()">
-                <pre th:text="${#authentication.principal}"></pre>
-            </sec:authorize>-->
-            <!-- 로그인 상태 -->
-            <sec:authorize access="isAuthenticated()">
-                <span sec:authentication="name"></span>님 환영합니다!
-                <a th:href="@{/user/logout_personal}">로그아웃</a>
-            </sec:authorize>
+
             <!-- 비로그인 상태 -->
             <sec:authorize access="isAnonymous()">
                 <a th:href="@{/user/login_personal}">로그인</a>
                 <a th:href="@{/user/signup_personal}">회원가입</a>
             </sec:authorize>
+
+            <!-- 로그인 상태 -->
+            <sec:authorize access="isAuthenticated()">
+                <span th:if="${#authentication.name != 'anonymousUser'}">
+                    <span sec:authentication="name"></span>님 환영합니다!
+                    <a href="#" id="logoutBtn">로그아웃</a>
+                    <form id="logoutForm" method="post" style="display: none;" th:action="@{/logout}"></form>
+                </span>
+            </sec:authorize>
+
         </div>
     </header>
 </div>
