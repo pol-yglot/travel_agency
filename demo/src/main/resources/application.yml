@@ -42,15 +42,16 @@ spring:
       password: 1234
       roles: USER,ADMIN
 
-
   devtools:
     restart:
       enabled: true
+
 
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
 #  type-aliases-package: com.example.demo.vo
 
 logging:
@@ -62,3 +63,11 @@ logging:
 
 file:
   upload-dir: ./uploads
+
+amadeus:
+  api:
+    clientId: YOUR_CLIENT_ID
+    clientSecret: YOUR_CLIENT_SECRET
+    url:
+      token: https://test.api.amadeus.com/v1/security/oauth2/token
+      search: https://test.api.amadeus.com/v2/shopping/flight-offers

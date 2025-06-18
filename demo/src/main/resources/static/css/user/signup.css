@@ -1,0 +1,150 @@
+/* 전체 wrapper */
+.signup-form {
+    padding: 60px 20px;
+    background-color: #f8f9fb;
+    flex: 1;
+}
+
+/* 회원가입 폼 카드 */
+.form-wrapper {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 36px 28px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    border-top: 4px solid #007bff;
+    transition: all 0.2s ease;
+}
+
+/* 최상단 제목 */
+.form-wrapper h2 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 36px;
+    color: #222;
+}
+
+/* 각 스텝 제목 */
+.form-wrapper h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+/* input 묶음 */
+.form-group {
+    margin-bottom: 20px;
+}
+.form-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+.form-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #fff;
+    transition: border 0.2s;
+}
+.form-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* 체크박스 */
+.checkbox-group {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* 버튼 */
+.signup-form button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px 0;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+.signup-form button:hover {
+    background-color: #0056b3;
+}
+.signup-form button + button {
+    margin-top: 10px;
+}
+
+/* 이전 버튼 스타일 */
+.backBtn {
+    background-color: #6c757d !important;
+}
+.backBtn:hover {
+    background-color: #495057 !important;
+}
+
+/* 반응형 대응 */
+@media screen and (max-width: 600px) {
+    .form-wrapper {
+        padding: 30px 20px;
+        margin: 0 16px;
+    }
+}
+
+.signup-complete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+}
+
+.complete-wrapper {
+    text-align: center;
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.complete-wrapper h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.button-group a {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+

@@ -1,0 +1,27 @@
+.error-container {
+    max-width: 400px;
+    margin: 120px auto;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #444;
+}
+.error-container h1 {
+    font-size: 80px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+.error-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.error-container a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.error-container a:hover {
+    background-color: #0056b3;
+}

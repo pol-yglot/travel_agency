@@ -1,0 +1,233 @@
+/* 기본 공통 */
+body {
+    font-family: 'Pretendard', sans-serif;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* 전체 섹션 가운데 정렬용 공통 클래스 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 슬라이더 기본 */
+.slick-slider-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 16px;
+    box-sizing: border-box;
+}
+
+.slick-slider img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* 슬라이더 컨트롤 버튼 */
+.slick-controls {
+    display: flex;
+    justify-content: center;   /* 가로 가운데 정렬 */
+    align-items: center;       /* 세로 정렬 (필요시) */
+    margin-top: 10px;
+    gap: 10px; /* 버튼 사이 여백 */
+}
+
+.slick-controls button {
+    padding: 6px 12px;
+    font-size: 14px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* 💡 반응형 대응 */
+/* 💡 반응형 대응 */
+@media (max-width: 1024px) {
+    .slick-slider-wrapper {
+        padding: 15px;
+    }
+
+    .slick-controls {
+        display: flex;              /* 꼭 명시 */
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+    }
+
+    .slick-controls button {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .slick-slider-wrapper {
+        padding: 10px;
+    }
+
+    .slick-slider img {
+        border-radius: 4px;
+    }
+
+    .slick-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slick-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .slick-controls button {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+}
+
+/* 기업이념 */
+.vision-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.vision-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+/* 서비스 카드 */
+.service-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 30px auto 0;
+}
+
+.service-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    font-size: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: 0.2s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.service-card i {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+/* 프로모션 */
+.promo-banner {
+    background-color: #ffe066;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* 고객사 로고 */
+.partner-section {
+    padding: 60px 20px;
+    background-color: #f1f3f5;
+    text-align: center;
+}
+
+.partners img {
+    height: 50px;
+    margin: 10px 20px;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.partners img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* 모달 공통 */
+.modal-wrapper {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    max-width: 360px;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-content button {
+    margin: 10px 0;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.personal-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.corporate-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.close-btn {
+    margin-top: 10px;
+    background-color: #dee2e6;
+    color: #333;
+}
+
+/* 텍스트 */
+.desc {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 10px;
+}

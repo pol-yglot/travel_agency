@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<html lang="ko">
+
+<!-- 공통 head include -->
+<th:block th:replace="fragments/user/head :: head"></th:block>
+
 <body>
-$END$
+
+<!-- 공통 header include -->
+<th:block th:replace="~{fragments/user/header :: header}"></th:block>
+
+<link rel="stylesheet" href="/css/common/index.css">
+
+<!-- 공통 nav include -->
+<th:block th:replace="fragments/user/nav :: nav"></th:block>
+
+<main class="mypage-container">
+    <p th:text="${user}"></p>
+    <div class="welcome">
+        <h2 th:text="|환영합니다, ${user.name} 님!|"></h2>
+        <p>원하는 서비스를 선택하세요</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>항공권 예약</h3>
+            <p>전 세계 항공편을 검색하고 빠르게 예약하세요.</p>
+            <a href="/flight">항공 검색</a>
+        </div>
+        <div class="card">
+            <h3>호텔 예약</h3>
+            <p>출장에 적합한 숙소를 손쉽게 찾고 예약하세요.</p>
+            <a href="/hotel">호텔 검색</a>
+        </div>
+        <div class="card">
+            <h3>차량 렌트</h3>
+            <p>지역 기반 렌터카를 실시간으로 확인하세요.</p>
+            <a href="/car">차량 검색</a>
+        </div>
+        <div class="card">
+            <h3>자동 일정표</h3>
+            <p>예약 내역 기반으로 맞춤 일정을 생성합니다.</p>
+            <a href="/schedule">일정 보기</a>
+        </div>
+        <div class="card">
+            <h3>여행 정보</h3>
+            <p>외교부 API 기반 실시간 여행 정보 제공</p>
+            <a href="/board/info">정보 보기</a>
+        </div>
+    </div>
+
+</main>
+
+
+
+<!-- 공통 footer include -->
+<th:block th:replace="fragments/user/footer :: footer"></th:block>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+    lucide.createIcons();
+</script>
+
 </body>
+
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<!-- 공통 head include -->
+<th:block th:replace="fragments/user/head :: head"></th:block>
+
+<!-- 커스텀 css -->
+<link rel="stylesheet" href="/css/user/signup.css">
+
+<body>
+<!-- 공통 header include -->
+<th:block th:replace="~{fragments/user/header :: header}"></th:block>
+
+<!-- 공통 nav include -->
+<th:block th:replace="fragments/user/nav :: nav"></th:block>
+
+<main class="signup-complete">
+    <section class="complete-wrapper">
+        <h2>🎉 회원가입이 완료되었습니다!</h2>
+        <p>
+            가입을 축하드립니다.<br>
+            지금 바로 로그인을 하여 서비스를 이용해보세요.
+        </p>
+        <div class="button-group">
+            <a href="/login_personal" class="btn-primary">로그인 하러가기</a>
+            <a href="/" class="btn-secondary">메인으로 돌아가기</a>
+        </div>
+    </section>
+</main>
+
+<!-- 공통 footer include -->
+<th:block th:replace="fragments/user/footer :: footer"></th:block>
+
+</body>
+</html>

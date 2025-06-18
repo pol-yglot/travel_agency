@@ -4,7 +4,6 @@ import com.example.demo.dto.UserSignupDTO;
 import com.example.demo.mapper.user.UserMapper;
 import com.example.demo.service.UserService;
 import com.example.demo.vo.UserVO;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -48,6 +47,11 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("아이디 또는 비밀번호가 올바르지 않습니다.");
         }
         return user.get();
+    }
+
+    @Override
+    public Optional<UserVO> findByEmail(String username) {
+        return userMapper.findByEmail(username);
     }
 
 }

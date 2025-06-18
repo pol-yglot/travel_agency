@@ -1,11 +1,11 @@
 $(function (){
     // 테스트
     $("input[name=name]").val('홍길동');
-    $("input[name=email]").val('teset@naver.com');
-    $("input[name=password]").val('test1111');
-    $("input[name=confirm_password]").val('test1111');
+    $("input[name=email]").val('test6@naver.com');
+    $("input[name=password]").val('test6666');
+    $("input[name=confirm_password]").val('test6666');
     $("input[name=phone]").val('010-1111-1111');
-    $("input[name=marketingAgree]").val(true);
+    $("input[name=marketingAgree]").prop("checked", true);
     $("input[name=passportName]").val('KILDONGHONG');
     $("input[name=nationality]").val("KOREA");
 });
@@ -48,4 +48,46 @@ function validateStep1() {
     }
 
     goToStep2(); // 유효하면 다음 단계로
+}
+
+function validateStep2() {
+    const birth = $("input[name=birthDate]").val();
+    const passport = $("input[name=passportName]").val();
+    const nationality = $("input[name=nationality]").val();
+
+    const birthRegex = /^\d{4}-\d{2}-\d{2}$/;
+    const passportRegex = /^[a-zA-Z\s]{2,}$/;
+    const nationRegex = /^[가-힣a-zA-Z\s]{2,}$/;
+
+    if (!birth || !birthRegex.test(birth)) {
+        alert("생년월일을 yyyy-mm-dd 형식으로 입력해주세요.");
+        return false;
+    }
+
+    if (passport && !passportRegex.test(passport)) {
+        alert("여권 영문 이름은 영문자만 입력 가능합니다.");
+        return false;
+    }
+
+    if (nationality && !nationRegex.test(nationality)) {
+        alert("국적은 한글 또는 영문으로 입력해주세요.");
+        return false;
+    }
+
+    return true; // 유효성 통과 → submit 진행
+}
+
+// 스텝 인디케이터
+function goToStep2() {
+    document.getElementById("step1").style.display = "none";
+    document.getElementById("step2").style.display = "block";
+    document.getElementById("stepDot1").classList.remove("active");
+    document.getElementById("stepDot2").classList.add("active");
+}
+
+function goToStep1() {
+    document.getElementById("step2").style.display = "none";
+    document.getElementById("step1").style.display = "block";
+    document.getElementById("stepDot2").classList.remove("active");
+    document.getElementById("stepDot1").classList.add("active");
 }

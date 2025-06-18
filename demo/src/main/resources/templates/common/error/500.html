@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="ko">
+
+<!-- 공통 head include -->
+<th:block th:replace="fragments/user/head :: head"></th:block>
+
 <body>
-난 404에러 페이지야
+
+<link rel="stylesheet" href="/css/common/error.css" />
+
+<!-- 공통 header include -->
+<th:block th:replace="~{fragments/user/header :: header}"></th:block>
+
+<!-- 공통 nav include -->
+<th:block th:replace="fragments/user/nav :: nav"></th:block>
+
+
+<div class="error-container">
+    <h1>500</h1>
+    <p>서버에 오류가 발생하였습니다. 잠시 후에 다시 시도해주세요.</p>
+    <a href="/">메인으로 돌아가기</a>
+</div>
+
+<!-- 공통 footer include -->
+<th:block th:replace="fragments/user/footer :: footer"></th:block>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </body>
+
 </html>
