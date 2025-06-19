@@ -90,6 +90,12 @@
             <artifactId>thymeleaf-layout-dialect</artifactId>
             <version>3.2.1</version>
         </dependency>
+        <!-- WebClient 의존성 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>3.4.5</version>
+        </dependency>
     </dependencies>
 
     <build>

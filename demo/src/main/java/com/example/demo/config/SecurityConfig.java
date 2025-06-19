@@ -21,7 +21,7 @@ public class SecurityConfig {
                 // 정적 리소스, 공개 페이지는 먼저 허용
                 .requestMatchers(
                         "/", "/user/login**", "/signup**", "/signup_complete", "/css/**", "/js/**", "/images/**",
-                        "/favicon.ico", "/site.webmanifest"
+                        "/favicon.ico", "/site.webmanifest", "/api/**", "/flight/**"
                 ).permitAll()
                 // 권한 필요
                 .requestMatchers("/admin/**").hasRole("ADMIN")

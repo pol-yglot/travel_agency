@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<!-- 공통 head include -->
+<th:block th:replace="~{fragments/user/head :: head}"></th:block>
+
+<body>
+
+<!-- 공통 header include -->
+<th:block th:replace="~{fragments/user/header :: header}"></th:block>
+
+<!-- 공통 nav include -->
+<th:block th:replace="~{fragments/user/nav :: nav}"></th:block>
+
+<link rel="stylesheet" href="/css/common/index.css">
+
+<section class="corp-container">
+    <h2>항공권 검색</h2>
+
+    <form id="searchForm" class="corp-form">
+        <label>출발지:
+            <input type="text" id="origin" name="origin" placeholder="ICN" required>
+        </label>
+        <label>도착지:
+            <input type="text" id="destination" name="destination" placeholder="NRT" required>
+        </label>
+        <label>출발일:
+            <input type="date" id="departureDate" name="departureDate" required>
+        </label>
+        <label>인원:
+            <input type="number" id="adults" name="adults" min="1" value="1" required>
+        </label>
+        <button type="submit" class="btn-search">검색</button>
+    </form>
+
+    <hr>
+
+    <table class="result-table">
+        <thead>
+        <tr>
+            <th>항공사</th>
+            <th>출발</th>
+            <th>도착</th>
+            <th>출발시각</th>
+            <th>도착시각</th>
+            <th>가격</th>
+        </tr>
+        </thead>
+        <tbody id="resultBody"></tbody>
+    </table>
+</section>
+
+<!-- 공통 footer include -->
+<th:block th:replace="~{fragments/user/footer :: footer}"></th:block>
+
+
+<script>
+    $('#searchForm').on('submit', function (e) {
+            e.preventDefault();
+
+            const data = {
+                origin: $('#origin').val(),
+                destination: $('#destination').val(),
+                departureDate: $('#departureDate').val(),
+                adults: $('#adults').val()
+            };
+
+            $.ajax({
+                url: '/api/flight_search',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    const tbody = $('#resultBody');
+                    tbody.empty();
+                    $.each(response, function (i, item) {
+                        tbody.append(`
+                        <tr>
+                            <td>${item.airline}</td>
+                            <td>${item.departure}</td>
+                            <td>${item.arrival}</td>
+                            <td>${item.departureTime}</td>
+                            <td>${item.arrivalTime}</td>
+                            <td>${item.price}</td>
+                        </tr>
+                    `);
+                    });
+                },
+                error: function (xhr) {
+                    alert('검색 실패: ' + xhr.status);
+                }
+            });
+    });
+</script>
+</body>
+</html>

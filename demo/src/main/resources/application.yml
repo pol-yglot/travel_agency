@@ -64,10 +64,11 @@ logging:
 file:
   upload-dir: ./uploads
 
+# 키 값 푸시 제외
 amadeus:
   api:
-    clientId: YOUR_CLIENT_ID
-    clientSecret: YOUR_CLIENT_SECRET
+    clientId: A38fPv9ADGDumpiFNtKZTyfFoDAZK9Xt
+    clientSecret: LOUGDLku4Czj61mo
     url:
       token: https://test.api.amadeus.com/v1/security/oauth2/token
       search: https://test.api.amadeus.com/v2/shopping/flight-offers
